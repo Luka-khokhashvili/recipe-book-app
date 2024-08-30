@@ -12,9 +12,11 @@ import {
   Button,
   Chip,
   Grid,
+  Sheet,
   Box,
   CardActions,
 } from "@mui/joy";
+import { GradientBack } from "./GradientBack";
 
 function App() {
   const [recipes, setRecipes] = useState<recipe[] | null>(null);
@@ -25,16 +27,55 @@ function App() {
 
   return (
     <div className="App">
-      <Box sx={{ flexGrow: 1 }}>
+      <Sheet
+        sx={{
+          position: "relative",
+          height: "90vh",
+          zIndex: "-999",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <GradientBack />
+        <Typography
+          level="h1"
+          sx={{
+            fontSize: "5rem",
+            color: "rgba(225, 225, 225, 0.5)",
+            zIndex: "1",
+            textTransform: "uppercase",
+            weight: "900",
+          }}
+        >
+          Recipe Book
+        </Typography>
+        <Typography level="title-lg" sx={{ color: "rgba(225, 225, 225, 0.5)" }}>
+          Recipes from all over the world
+        </Typography>
+      </Sheet>
+
+      <Box
+        sx={{
+          flexGrow: 1,
+          pt: "1rem",
+          borderTop: "5px solid grey",
+          justifyContent: "center",
+        }}
+      >
+        <Typography sx={{ fontSize: "3rem", textAlign: "center" }}>
+          Recipes
+        </Typography>
         <Grid container spacing={3} sx={{ gap: "2%", margin: "1%" }}>
           {recipes &&
             recipes.map((recipe) => (
               <Card
                 sx={{
-                  width: 320,
+                  width: 366,
                   maxWidth: "100%",
                   boxShadow: "lg",
-                  margin: "1%",
+                  m: "1%",
                 }}
               >
                 <CardOverflow>
@@ -50,7 +91,7 @@ function App() {
                   <Typography level="body-xs">{recipe.strCategory}</Typography>
 
                   <Typography
-                    level="title-lg"
+                    level="h2"
                     sx={{ mt: 1, fontWeight: "xl" }}
                     endDecorator={
                       recipe.strTags ? (
@@ -67,7 +108,7 @@ function App() {
                   >
                     {recipe.strMeal}
                   </Typography>
-                  <Typography level="body-sm">{recipe.strArea}</Typography>
+                  <Typography level="body-md">{recipe.strArea}</Typography>
                 </CardContent>
                 <CardActions>
                   <Button variant="solid" color="primary" size="lg">
