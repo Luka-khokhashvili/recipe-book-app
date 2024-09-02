@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .custom-shape-divider-bottom-1725112114 {
   position: absolute;
   bottom: 0;

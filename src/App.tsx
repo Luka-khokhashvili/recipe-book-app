@@ -36,6 +36,7 @@ function App() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
+          alignItems: "center",
           top: "0",
         }}
       >
@@ -45,13 +46,16 @@ function App() {
           alt="Recipe book icon"
           style={{ width: "120px", aspectRatio: "1" }}
         />
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={1} sx={{ height: "min-content" }}>
           <Link
+            href="#recipesSection"
+            color="warning"
             underline="hover"
             sx={{
               fontSize: "1.4rem",
               color: "rgb(255, 255, 255)",
               textTransform: "uppercase",
+              "&:hover": { color: "rgb(165 165 165)" },
             }}
           >
             Recipes
@@ -119,6 +123,7 @@ function App() {
       </Sheet>
 
       <Box
+        id="recipesSection"
         sx={{
           flexGrow: 1,
           pt: "1rem",
@@ -149,22 +154,28 @@ function App() {
                   </AspectRatio>
                 </CardOverflow>
                 <CardContent>
-                  <Typography level="body-xs">{recipe.strCategory}</Typography>
+                  <Typography level="body-xs">
+                    Category: {recipe.strCategory}
+                  </Typography>
 
                   <Typography
                     level="h2"
                     sx={{ mt: 1, fontWeight: "xl" }}
                     endDecorator={
-                      recipe.strTags ? (
-                        <Chip
-                          component="span"
-                          size="sm"
-                          variant="soft"
-                          color="success"
-                        >
-                          {recipe.strTags}
-                        </Chip>
-                      ) : null
+                      recipe.strTags
+                        ? recipe.strTags.split(",").map((tag, index) => (
+                            <Chip
+                              key={index}
+                              component="span"
+                              size="sm"
+                              variant="soft"
+                              color="success"
+                              sx={{ margin: "2px" }}
+                            >
+                              {tag.trim()}
+                            </Chip>
+                          ))
+                        : null
                     }
                   >
                     {recipe.strMeal}
