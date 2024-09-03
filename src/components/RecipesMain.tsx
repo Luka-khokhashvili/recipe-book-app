@@ -7,12 +7,11 @@ import {
   CardActions,
   AspectRatio,
   Card,
-  CardContent,
   Button,
-  Chip,
 } from "@mui/joy";
 import { recipe } from "../interfaces";
 import { getRecipes } from "../ApiCall";
+import RecipeCard from "./RecipeCard";
 
 export default function RecipesMain(props: {
   recipes: recipe[] | null;
@@ -56,35 +55,7 @@ export default function RecipesMain(props: {
                   />
                 </AspectRatio>
               </CardOverflow>
-              <CardContent>
-                <Typography level="body-xs">
-                  Category: {recipe.strCategory}
-                </Typography>
-
-                <Typography
-                  level="h2"
-                  sx={{ mt: 1, fontWeight: "xl" }}
-                  endDecorator={
-                    recipe.strTags
-                      ? recipe.strTags.split(",").map((tag, index) => (
-                          <Chip
-                            key={index}
-                            component="span"
-                            size="sm"
-                            variant="soft"
-                            color="success"
-                            sx={{ margin: "2px" }}
-                          >
-                            {tag.trim()}
-                          </Chip>
-                        ))
-                      : null
-                  }
-                >
-                  {recipe.strMeal}
-                </Typography>
-                <Typography level="body-md">{recipe.strArea}</Typography>
-              </CardContent>
+              <RecipeCard recipe={recipe} />
               <CardActions>
                 <Button variant="solid" color="primary" size="lg">
                   View recipe
