@@ -12,6 +12,7 @@ import {
 import { recipe } from "../interfaces";
 import { getRecipes } from "../ApiCall";
 import RecipeCard from "./RecipeCard";
+import { Link } from "react-router-dom";
 
 export default function RecipesMain(props: {
   recipes: recipe[] | null;
@@ -55,9 +56,17 @@ export default function RecipesMain(props: {
                   />
                 </AspectRatio>
               </CardOverflow>
+
               <RecipeCard recipe={recipe} />
+
               <CardActions>
-                <Button variant="solid" color="primary" size="lg">
+                <Button
+                  component={Link}
+                  to={`/recipe/${recipe.idMeal}`}
+                  variant="solid"
+                  color="primary"
+                  size="lg"
+                >
                   View recipe
                 </Button>
               </CardActions>
