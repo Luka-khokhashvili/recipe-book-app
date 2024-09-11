@@ -62,7 +62,7 @@ export default function RecipesMain(props: {
               <CardActions>
                 <Button
                   component={Link}
-                  to={`/recipe/${recipe.idMeal}`}
+                  to={`/recipe/${recipe.strMeal}`}
                   variant="solid"
                   color="primary"
                   size="lg"

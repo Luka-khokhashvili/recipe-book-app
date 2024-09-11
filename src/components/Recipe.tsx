@@ -1,29 +1,71 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Typography, Box } from "@mui/joy";
+import { Typography, Box, CircularProgress } from "@mui/joy";
 import { recipe } from "../interfaces";
+import { findRecipe } from "../ApiCall";
 
 const RecipeDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { name } = useParams<{ name: string }>();
   const [recipe, setRecipe] = useState<recipe | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Fetch recipe data based on the `id` from the URL
-    fetch(`https://api.example.com/recipes/${id}`)
-      .then((response) => response.json())
-      .then((data) => setRecipe(data))
-      .catch((error) => console.error("Error fetching recipe:", error));
-  }, [id]);
+    if (name) {
+      setLoading(true);
+      findRecipe(name)
+        .then((data) => {
+          if (data === null) {
+            setError("Recipe not found");
+            setRecipe(null);
+          } else {
+            setRecipe(data);
+            setError(null);
+          }
+        })
+        .catch((e) => {
+          setError(e.message);
+          setRecipe(null);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, [name]);
+
+  if (loading) {
+    return (
+      <Typography
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress size="lg" variant="plain" />
+        Loading...
+      </Typography>
+    );
+  }
+
+  if (error) {
+    return <Typography>Error: {error}</Typography>;
+  }
 
   if (!recipe) {
-    return <Typography>Loading...</Typography>;
+    return <Typography>Recipe wasn't found</Typography>;
   }
 
   return (
     <Box>
       <Typography level="h2">{recipe.strMeal}</Typography>
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-      <Typography level="body-sm">{recipe.strInstructions}</Typography>
+      {recipe.strMealThumb && (
+        <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+      )}
+      {recipe.strInstructions && (
+        <Typography level="body-sm">{recipe.strInstructions}</Typography>
+      )}
       {/* Add more details as needed */}
     </Box>
   );
