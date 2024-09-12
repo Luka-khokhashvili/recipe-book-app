@@ -38,6 +38,7 @@ export default function WelcomeSection() {
           zIndex: "1",
           textTransform: "uppercase",
           fontWeight: "900",
+          "@media screen and (max-width: 436px)": { fontSize: "6rem" },
         }}
       >
         Recipe
@@ -50,6 +51,7 @@ export default function WelcomeSection() {
           textTransform: "uppercase",
           fontWeight: "800",
           transform: "translate(-50%, -105%)",
+          "@media screen and (max-width: 436px)": { fontSize: "3rem" },
         }}
       >
         Book

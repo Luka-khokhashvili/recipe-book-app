@@ -26,3 +26,14 @@ html {
 .custom-shape-divider-bottom-1725112114 .shape-fill {
   fill: #ffffff;
 }
+
+.recipeBookIcon {
+  width: 120px;
+  aspect-ratio: 1/1;
+}
+
+@media screen and (max-width: 436px) {
+  .recipeBookIcon {
+    width: 65px;
+  }
+}
