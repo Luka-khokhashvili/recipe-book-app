@@ -1,5 +1,5 @@
+// import React from "react";
 import { Link, Stack } from "@mui/joy";
-import React from "react";
 
 export default function NavStack() {
   return (
@@ -13,7 +13,7 @@ export default function NavStack() {
           color: "rgb(255, 255, 255)",
           textTransform: "uppercase",
           "&:hover": { color: "rgb(165 165 165)" },
-          "@media screen and (max-width: 436px)": {
+          "@media screen and (min-width: 1024px)": {
             ":hover": { color: "rgb(255, 255, 255)" },
           },
         }}

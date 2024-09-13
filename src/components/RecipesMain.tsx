@@ -36,7 +36,17 @@ export default function RecipesMain(props: {
       <Typography sx={{ fontSize: "3rem", textAlign: "center" }}>
         Recipes
       </Typography>
-      <Grid container spacing={3} sx={{ gap: "2%", margin: "1%" }}>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          gap: "2%",
+          margin: "1%",
+          "@media screen and (max-width: 436px)": {
+            justifyContent: "center",
+          },
+        }}
+      >
         {recipes &&
           recipes.map((recipe) => (
             <Card
@@ -45,6 +55,9 @@ export default function RecipesMain(props: {
                 maxWidth: "100%",
                 boxShadow: "lg",
                 m: "1%",
+                "@media screen and (max-width: 768px) and (min-width: 436px)": {
+                  maxWidth: "42%",
+                },
               }}
             >
               <CardOverflow>
