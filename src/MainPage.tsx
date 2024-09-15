@@ -9,7 +9,11 @@ export default function MainPage() {
 
   return (
     <>
-      <NavigationBar />
+      <NavigationBar
+        imageSrc="src\assets\recipeBook.png"
+        position="absolute"
+        bgColor="transparent"
+      />
       <WelcomeSection />
       <RecipesMain recipes={recipes} setRecipes={setRecipes} />
     </>

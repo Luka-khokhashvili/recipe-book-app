@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Box } from "@mui/joy";
 import NavStack from "./NavStack";
 import MobileNavBar from "./MobileNavBar";
 
-function NavigationBar() {
+function NavigationBar(props: {
+  bgColor: string;
+  imageSrc: string;
+  position: string;
+}) {
+  const { bgColor, imageSrc, position } = props;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
 
   useEffect(() => {
@@ -25,9 +30,10 @@ function NavigationBar() {
     <Box
       className="navigationBar"
       sx={{
+        backgroundColor: bgColor,
         width: "100%",
         pt: "1%",
-        position: "absolute",
+        position: position,
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
@@ -38,7 +44,7 @@ function NavigationBar() {
     >
       <img
         className="recipeBookIcon"
-        src="src/assets/recipeBook.png"
+        src={imageSrc}
         loading="lazy"
         alt="Recipe book icon"
       />
