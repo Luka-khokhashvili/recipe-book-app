@@ -1,6 +1,7 @@
 // import React from "react";
-import { CardContent, Typography, Chip, Box } from "@mui/joy";
+import { CardContent, Typography, Box } from "@mui/joy";
 import { recipe } from "../interfaces";
+import RecipeTags from "./RecipeTags";
 
 export default function RecipeCard(props: { recipe: recipe }) {
   const { recipe } = props;
@@ -24,18 +25,7 @@ export default function RecipeCard(props: { recipe: recipe }) {
                 mt: 1,
               }}
             >
-              {recipe.strTags.split(",").map((tag: string, index: number) => (
-                <Chip
-                  key={index}
-                  component="span"
-                  size="sm"
-                  variant="soft"
-                  color="success"
-                  sx={{ margin: "2px" }}
-                >
-                  {tag.trim()}
-                </Chip>
-              ))}
+              {recipe.strTags && <RecipeTags recipe={recipe} />}
             </Box>
           ) : null
         }
