@@ -1,7 +1,7 @@
 // import React from "react";
 import { CardContent, Typography, Box } from "@mui/joy";
-import { recipe } from "../interfaces";
-import RecipeTags from "./RecipeTags";
+import { recipe } from "../../interfaces";
+import RecipeTags from "../components/sharedComponents/RecipeTags";
 
 export default function RecipeCard(props: { recipe: recipe }) {
   const { recipe } = props;

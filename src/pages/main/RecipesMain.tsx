@@ -9,8 +9,8 @@ import {
   Card,
   Button,
 } from "@mui/joy";
-import { recipe } from "../interfaces";
-import { getRecipes } from "../ApiCall";
+import { recipe } from "../../interfaces";
+import { getRecipes } from "../../ApiCall";
 import RecipeCard from "./RecipeCard";
 import { Link } from "react-router-dom";
 

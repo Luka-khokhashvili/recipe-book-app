@@ -2,8 +2,10 @@ import React from "react";
 import { Box, Typography } from "@mui/joy";
 
 const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
-  // Extract the YouTube video ID
-  const videoId = strYoutube.split("v=")[1]?.split("&")[0];
+  // Extract the YouTube video ID from the strYoutube string
+  const videoId = strYoutube.includes("v=")
+    ? strYoutube.split("v=")[1]?.split("&")[0]
+    : null;
 
   return (
     <Box>
@@ -14,7 +16,7 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
         <Box
           sx={{
             position: "relative",
-            paddingBottom: "56.25%", // Aspect ratio for 16:9 video
+            paddingBottom: "50%",
             height: 0,
             overflow: "hidden",
             maxWidth: "100%",
@@ -30,9 +32,10 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
             style={{
               position: "absolute",
               top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "85%",
+              aspectRatio: "16 / 9",
             }}
           ></iframe>
         </Box>

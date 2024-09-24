@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { recipe } from "./interfaces";
-import NavigationBar from "./components/NavigationBar";
-import WelcomeSection from "./components/WelcomeSection";
-import RecipesMain from "./components/RecipesMain";
+import { recipe } from "../../interfaces";
+import NavigationBar from "../components/NavigationBar";
+import WelcomeSection from "./WelcomeSection";
+import RecipesMain from "./RecipesMain";
 
 export default function MainPage() {
   const [recipes, setRecipes] = useState<recipe[] | null>(null);
@@ -10,7 +10,7 @@ export default function MainPage() {
   return (
     <>
       <NavigationBar
-        imageSrc="src\assets\recipeBook.png"
+        imageSrc="src\assets\recipeBook.webp"
         position="absolute"
         bgColor="transparent"
       />

@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Sheet, Typography } from "@mui/joy";
-import { GradientBack } from "../GradientBack";
+import { GradientBack } from "../components/GradientBack";
 
 export default function WelcomeSection() {
   return (

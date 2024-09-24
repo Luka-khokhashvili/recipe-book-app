@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Typography, Box, CircularProgress } from "@mui/joy";
-import { recipe } from "../interfaces";
-import { findRecipe } from "../ApiCall";
-import RecipeTags from "./RecipeTags";
+import { recipe } from "../../interfaces";
+import { findRecipe } from "../../ApiCall";
+import RecipeTags from "../components/sharedComponents/RecipeTags";
 import RecipeVideoEmbed from "./RecipeVideoEmbed";
 
 const RecipeDetail: React.FC = () => {
@@ -88,7 +88,6 @@ const RecipeDetail: React.FC = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(12, 1fr)",
-        gridTemplateRows: "repeat(6, .5fr)",
       }}
     >
       <Box
