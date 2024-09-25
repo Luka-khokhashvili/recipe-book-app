@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {
   Box,
-  Typography,
+  // Typography,
   Grid,
   CardOverflow,
   CardActions,
@@ -9,7 +9,7 @@ import {
   Card,
   Button,
 } from "@mui/joy";
-import { recipe } from "../../interfaces";
+import { recipe } from "../../interfaces/interfaces";
 import { getRecipes } from "../../ApiCall";
 import RecipeCard from "./RecipeCard";
 import { Link } from "react-router-dom";
@@ -33,9 +33,9 @@ export default function RecipesMain(props: {
         justifyContent: "center",
       }}
     >
-      <Typography sx={{ fontSize: "3rem", textAlign: "center" }}>
+      {/* <Typography sx={{ fontSize: "3rem", textAlign: "center" }}>
         Recipes
-      </Typography>
+      </Typography> */}
       <Grid
         container
         spacing={3}
@@ -50,6 +50,7 @@ export default function RecipesMain(props: {
         {recipes &&
           recipes.map((recipe) => (
             <Card
+              key={recipe.idMeal}
               sx={{
                 width: 366,
                 maxWidth: "100%",

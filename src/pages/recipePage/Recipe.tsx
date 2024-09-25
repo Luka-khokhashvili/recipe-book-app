@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Typography, Box, CircularProgress } from "@mui/joy";
-import { recipe } from "../../interfaces";
+import { recipe } from "../../interfaces/interfaces";
 import { findRecipe } from "../../ApiCall";
 import RecipeTags from "../components/sharedComponents/RecipeTags";
 import RecipeVideoEmbed from "./RecipeVideoEmbed";

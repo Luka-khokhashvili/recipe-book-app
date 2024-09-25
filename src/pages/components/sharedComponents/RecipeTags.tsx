@@ -1,6 +1,6 @@
 // import React from "react";
 import { Chip } from "@mui/joy";
-import { recipe } from "../../../interfaces";
+import { recipe } from "../../../interfaces/interfaces";
 
 export default function RecipeTags(props: { recipe: recipe }) {
   const { recipe } = props;

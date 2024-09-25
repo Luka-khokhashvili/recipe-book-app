@@ -1,5 +1,5 @@
 import axios from "axios";
-import { recipe } from "./interfaces";
+import { recipe } from "./interfaces/interfaces";
 
 export const axiosInstance = axios.create({
   baseURL: "https://www.themealdb.com/api/json/v1/1/search.php",

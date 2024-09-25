@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import { Box } from "@mui/joy";
 import NavStack from "./NavStack";
 import MobileNavBar from "./MobileNavBar";
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 
-function NavigationBar(props: {
-  bgColor: string;
-  imageSrc: string;
-  position: string;
-}) {
-  const { bgColor, imageSrc, position } = props;
+function NavigationBar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
 
   useEffect(() => {
@@ -30,24 +26,20 @@ function NavigationBar(props: {
     <Box
       className="navigationBar"
       sx={{
-        backgroundColor: bgColor,
+        bgcolor: "#0D6EFD",
         width: "100%",
-        pt: "1%",
-        position: position,
+        p: "1% 0",
+        position: "fixed",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
         top: "0",
+        zIndex: "100",
         "@media screen and (max-width: 436px)": { pt: "10%" },
       }}
     >
-      <img
-        className="recipeBookIcon"
-        src={imageSrc}
-        loading="lazy"
-        alt="Recipe book icon"
-      />
+      <MenuBookRoundedIcon sx={{ color: "#FFF", fontSize: "3rem" }} />
       {isMobile ? <MobileNavBar /> : <NavStack />}
     </Box>
   );
