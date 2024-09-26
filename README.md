@@ -1,50 +1,18 @@
-# React + TypeScript + Vite
+# Recipe Haven
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Check out live demo at [recipe-haven](https://recipe-book-app-xi.vercel.app/)
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Constructed a dynamic recipe application utilizing React, TypeScript, and Material-UI. Users can effortlessly search for and explore an extensive collection of recipes, each accompanied by detailed instructions, ingredient lists, and nutritional information. Leveraging Vite for accelerated development and Router for seamless navigation, the app provides a user-friendly experience. Furthermore, the integration of an API ensures that recipe data remains current and up-to-date, offering users access to the latest culinary trends and innovations.
 
-## Expanding the ESLint configuration
+## Tools used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Vite
+- React
+- TypeScript
+- Material UI
+- Router
+- React Query
+- Axios
+- Vite-Plugin-Compression
