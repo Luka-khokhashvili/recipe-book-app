@@ -2,15 +2,14 @@
 import { Sheet, Typography } from "@mui/joy";
 // import { GradientBack } from "../components/GradientBack";
 
-export default function WelcomeSection(props: { navbarHeight: number }) {
-  const { navbarHeight } = props;
+export default function WelcomeSection() {
   return (
     <Sheet
       sx={{
         position: "relative",
         height: "max-content",
         p: "1rem",
-        mt: `${navbarHeight}px`,
+        mt: "86px",
         zIndex: "-999",
         display: "flex",
         flexDirection: "column",
@@ -43,7 +42,7 @@ export default function WelcomeSection(props: { navbarHeight: number }) {
           "@media screen and (max-width: 436px)": { fontSize: "3rem" },
         }}
       >
-        Book
+        Haven
       </Typography>
       <Typography
         level="title-lg"

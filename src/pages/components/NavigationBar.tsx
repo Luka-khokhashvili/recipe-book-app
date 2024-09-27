@@ -6,6 +6,7 @@ import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 
 function NavigationBar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
+  const [glassmorph, setGlassmorph] = useState(false);
 
   useEffect(() => {
     // Function to handle screen width change
@@ -13,12 +14,23 @@ function NavigationBar() {
       setIsMobile(window.innerWidth <= 436);
     };
 
-    // Add event listener to handle screen resize
-    window.addEventListener("resize", handleResize);
+    // Function to handle scroll and change navbar position
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setGlassmorph(true);
+      } else {
+        setGlassmorph(false);
+      }
+    };
 
-    // Clean up the event listener on component unmount
+    // Add event listeners for resize and scroll
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up event listeners on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -36,7 +48,13 @@ function NavigationBar() {
         alignItems: "center",
         top: "0",
         zIndex: "100",
+        transition: "all 0.3s ease",
         "@media screen and (max-width: 436px)": { pt: "10%" },
+        ...(glassmorph && {
+          background: "rgba(13,110,253,0.5)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+        }),
       }}
     >
       <MenuBookRoundedIcon sx={{ color: "#FFF", fontSize: "3rem" }} />
