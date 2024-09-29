@@ -1,18 +1,8 @@
 import { useEffect } from "react";
-import {
-  Box,
-  // Typography,
-  Grid,
-  CardOverflow,
-  CardActions,
-  AspectRatio,
-  Card,
-  Button,
-} from "@mui/joy";
+import { Box, Grid } from "@mui/joy";
 import { recipe } from "../../interfaces/interfaces";
 import { getRecipes } from "../../ApiCall";
-import RecipeCard from "./RecipeCard";
-import { Link } from "react-router-dom";
+import FloatingCard from "./FloatingCard";
 
 export default function RecipesMain(props: {
   recipes: recipe[] | null;
@@ -33,9 +23,6 @@ export default function RecipesMain(props: {
         justifyContent: "center",
       }}
     >
-      {/* <Typography sx={{ fontSize: "3rem", textAlign: "center" }}>
-        Recipes
-      </Typography> */}
       <Grid
         container
         spacing={3}
@@ -45,46 +32,14 @@ export default function RecipesMain(props: {
           "@media screen and (max-width: 436px)": {
             justifyContent: "center",
           },
+          "@media screen and (max-width: 1440px) and (min-width: 1025px)": {
+            gap: "4.48%",
+          },
         }}
       >
         {recipes &&
           recipes.map((recipe) => (
-            <Card
-              key={recipe.idMeal}
-              sx={{
-                width: 366,
-                maxWidth: "100%",
-                boxShadow: "lg",
-                m: "1%",
-                "@media screen and (max-width: 768px) and (min-width: 436px)": {
-                  maxWidth: "42%",
-                },
-              }}
-            >
-              <CardOverflow>
-                <AspectRatio sx={{ minWidth: 200 }}>
-                  <img
-                    src={recipe.strMealThumb}
-                    loading="lazy"
-                    alt="meal thumbnail"
-                  />
-                </AspectRatio>
-              </CardOverflow>
-
-              <RecipeCard recipe={recipe} />
-
-              <CardActions>
-                <Button
-                  component={Link}
-                  to={`/recipe/${recipe.strMeal}`}
-                  variant="solid"
-                  color="primary"
-                  size="lg"
-                >
-                  View recipe
-                </Button>
-              </CardActions>
-            </Card>
+            <FloatingCard key={recipe.idMeal} recipe={recipe} />
           ))}
       </Grid>
     </Box>

@@ -49,7 +49,7 @@ function NavigationBar() {
         top: "0",
         zIndex: "100",
         transition: "all 0.3s ease",
-        "@media screen and (max-width: 436px)": { pt: "10%" },
+        "@media screen and (max-width: 436px)": { p: "2vh 0 1vh 0" },
         ...(glassmorph && {
           background: "rgba(13,110,253,0.5)",
           backdropFilter: "blur(10px)",

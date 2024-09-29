@@ -9,7 +9,7 @@ export default function WelcomeSection() {
         position: "relative",
         height: "max-content",
         p: "1rem",
-        mt: "86px",
+        pt: "86px",
         zIndex: "-999",
         display: "flex",
         flexDirection: "column",
@@ -26,7 +26,7 @@ export default function WelcomeSection() {
           zIndex: "1",
           textTransform: "uppercase",
           fontWeight: "900",
-          "@media screen and (max-width: 436px)": { fontSize: "6rem" },
+          "@media screen and (max-width: 436px)": { fontSize: "24vw" },
         }}
       >
         Recipe
@@ -39,7 +39,7 @@ export default function WelcomeSection() {
           textTransform: "uppercase",
           fontWeight: "800",
           transform: "translate(-50%, -105%)",
-          "@media screen and (max-width: 436px)": { fontSize: "3rem" },
+          "@media screen and (max-width: 436px)": { fontSize: "11vw" },
         }}
       >
         Haven
@@ -48,6 +48,7 @@ export default function WelcomeSection() {
         level="title-lg"
         sx={{
           color: "rgba(225, 225, 225, 0.5)",
+          "@media screen and (max-width: 436px)": { fontSize: "5vw" },
         }}
       >
         Recipes from all over the world
