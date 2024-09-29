@@ -9,10 +9,14 @@ Constructed a dynamic recipe application utilizing React, TypeScript, and Materi
 ## Tools used
 
 - Vite
-- React
-- TypeScript
-- Material UI
-- Router
-- React Query
-- Axios
+- **React**
+- **TypeScript**
+- **Material UI**
+- **Router**
+- **Axios**
+- Version controle system - **Git**
+
+## Dependencies
+
 - Vite-Plugin-Compression
+- react-intersection-observer
