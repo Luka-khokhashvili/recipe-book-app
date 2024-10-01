@@ -2,7 +2,6 @@ import * as React from "react";
 import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import Drawer from "@mui/joy/Drawer";
-// import Input from "@mui/joy/Input";
 import List from "@mui/joy/List";
 import ListItemButton from "@mui/joy/ListItemButton";
 import Typography from "@mui/joy/Typography";
@@ -10,9 +9,17 @@ import ModalClose from "@mui/joy/ModalClose";
 import Menu from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { Link as MuiLink } from "@mui/joy";
-// import Search from "@mui/icons-material/Search";
+import SearchBar from "./SearchBar";
+import { recipe } from "../../../interfaces/interfaces";
 
-export default function MobileNavBar() {
+export default function MobileNavBar(props: {
+  recipes: recipe[] | null;
+  selectedRecipe: string | null;
+  setSelectedRecipe: React.Dispatch<React.SetStateAction<string | null>>;
+  handleRecipeSelection: () => void;
+}) {
+  const { recipes, selectedRecipe, handleRecipeSelection, setSelectedRecipe } =
+    props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -40,39 +47,12 @@ export default function MobileNavBar() {
           </Typography>
           <ModalClose id="close-icon" sx={{ position: "initial" }} />
         </Box>
-        {/* <Input
-          size="sm"
-          placeholder="Search"
-          variant="plain"
-          endDecorator={<Search />}
-          slotProps={{
-            input: {
-              "aria-label": "Search anything",
-            },
-          }}
-          sx={{
-            m: 3,
-            borderRadius: 0,
-            borderBottom: "2px solid",
-            borderColor: "neutral.outlinedBorder",
-            "&:hover": {
-              borderColor: "neutral.outlinedHoverBorder",
-            },
-            "&::before": {
-              border: "1px solid var(--Input-focusedHighlight)",
-              transform: "scaleX(0)",
-              left: 0,
-              right: 0,
-              bottom: "-2px",
-              top: "unset",
-              transition: "transform .15s cubic-bezier(0.1,0.9,0.2,1)",
-              borderRadius: 0,
-            },
-            "&:focus-within::before": {
-              transform: "scaleX(1)",
-            },
-          }}
-        /> */}
+        <SearchBar
+          recipes={recipes}
+          selectedRecipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+          handleRecipeSelection={handleRecipeSelection}
+        />
         <List
           size="lg"
           component="nav"
@@ -82,14 +62,11 @@ export default function MobileNavBar() {
             "& > div": { justifyContent: "center" },
           }}
         >
-          <ListItemButton sx={{ fontWeight: "lg" }}>
-            <Link to="/">Home</Link>
-          </ListItemButton>
           <ListItemButton>
-            <MuiLink href="#recipesSection">Recipes</MuiLink>
+            <MuiLink href="#recipesSection" onClick={() => setOpen(false)}>
+              Recipes
+            </MuiLink>
           </ListItemButton>
-          {/* <ListItemButton>Studio</ListItemButton>
-          <ListItemButton>Contact</ListItemButton> */}
         </List>
       </Drawer>
     </React.Fragment>

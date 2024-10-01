@@ -3,12 +3,21 @@ import { Box } from "@mui/joy";
 import NavStack from "./NavStack";
 import MobileNavBar from "./MobileNavBar";
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
-import { recipe } from "../../interfaces/interfaces";
+import { recipe } from "../../../interfaces/interfaces";
+import { useNavigate } from "react-router-dom";
 
 function NavigationBar(props: { recipes: recipe[] | null }) {
+  const navigate = useNavigate();
   const { recipes } = props;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
   const [glassmorph, setGlassmorph] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<string | null>(null);
+
+  const handleRecipeSelection = () => {
+    if (selectedRecipe) {
+      navigate(`/recipe/${selectedRecipe}`); // Navigate to the recipe page
+    }
+  };
 
   useEffect(() => {
     // Function to handle screen width change
@@ -60,7 +69,21 @@ function NavigationBar(props: { recipes: recipe[] | null }) {
       }}
     >
       <MenuBookRoundedIcon sx={{ color: "#FFF", fontSize: "3rem" }} />
-      {isMobile ? <MobileNavBar /> : <NavStack recipes={recipes} />}
+      {isMobile ? (
+        <MobileNavBar
+          recipes={recipes}
+          selectedRecipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+          handleRecipeSelection={handleRecipeSelection}
+        />
+      ) : (
+        <NavStack
+          recipes={recipes}
+          selectedRecipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+          handleRecipeSelection={handleRecipeSelection}
+        />
+      )}
     </Box>
   );
 }

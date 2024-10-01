@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { recipe } from "../../interfaces/interfaces";
-import NavigationBar from "../components/NavigationBar";
+import NavigationBar from "../components/NavigationBar/NavigationBar";
 import WelcomeSection from "./WelcomeSection";
 import RecipesMain from "./RecipesMain";
 import { getRecipes } from "../../ApiCall";
