@@ -20,7 +20,11 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
             height: 0,
             overflow: "hidden",
             maxWidth: "100%",
-            marginBottom: "1rem",
+            mb: "1rem",
+            "@media screen and (max-width: 436px)": {
+              mb: "unset",
+              pb: "56.25%",
+            },
           }}
         >
           <iframe
@@ -29,14 +33,7 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "85%",
-              aspectRatio: "16 / 9",
-            }}
+            className="recipeVideo"
           ></iframe>
         </Box>
       ) : (

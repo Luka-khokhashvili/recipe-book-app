@@ -88,8 +88,12 @@ const RecipeDetail: React.FC = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "repeat(12, 1fr)",
+        "@media screen and (max-width: 436px)": {
+          gridTemplateColumns: "repeat(1, 1fr)",
+        },
       }}
     >
+      {/* Recipe info */}
       <Box
         sx={{
           gridColumn: "span 4",
@@ -99,6 +103,10 @@ const RecipeDetail: React.FC = () => {
           gap: "1rem",
           p: "1rem",
           bgcolor: "#0A2343",
+          "@media screen and (max-width: 436px)": {
+            gridColumn: "span 1",
+            order: 2,
+          },
         }}
       >
         <Typography level="h1" sx={{ fontSize: "1.5rem", color: "#636B74" }}>
@@ -113,6 +121,7 @@ const RecipeDetail: React.FC = () => {
         <Typography level="body-lg" sx={{ color: "#D0D4D7" }}>
           {recipe.strArea}
         </Typography>
+        {/* Tags */}
         <Box
           sx={{
             display: "flex",
@@ -132,12 +141,17 @@ const RecipeDetail: React.FC = () => {
         </Box>
       </Box>
 
+      {/* Recipe image */}
       <Box
         sx={{
           gridColumn: "span 4",
           display: "flex",
           justifyContent: "center",
           position: "relative",
+          "@media screen and (max-width: 436px)": {
+            gridColumn: "span 1",
+            order: 1,
+          },
         }}
       >
         {recipe.strMealThumb && (
@@ -152,6 +166,7 @@ const RecipeDetail: React.FC = () => {
         )}
       </Box>
 
+      {/* Recipe ingredients */}
       <Box
         sx={{
           gridColumn: "span 4",
@@ -159,6 +174,11 @@ const RecipeDetail: React.FC = () => {
           p: "1rem",
           color: "#D0D4D7",
           bgcolor: "#0A2343",
+          "@media screen and (max-width: 436px)": {
+            gridColumn: "span 1",
+            gridRow: "span 1",
+            order: 3,
+          },
         }}
       >
         <Typography level="h2" sx={{ color: "#FFF" }}>
@@ -184,10 +204,9 @@ const RecipeDetail: React.FC = () => {
                   .filter((key) => key.startsWith("strIngredient"))
                   .map((ingredientKey, index) => {
                     const ingredient = recipe[ingredientKey as keyof recipe];
-                    const measureKey = `strMeasure${ingredientKey.slice(13)}`; // Get corresponding measure key (e.g. strMeasure1 for strIngredient1)
+                    const measureKey = `strMeasure${ingredientKey.slice(13)}`;
                     const measure = recipe[measureKey as keyof recipe];
 
-                    // Only display if the ingredient is not empty
                     if (ingredient && ingredient.trim() !== "") {
                       return (
                         <li key={index}>
@@ -199,14 +218,24 @@ const RecipeDetail: React.FC = () => {
                       );
                     }
 
-                    return null; // Don't render anything if the ingredient is empty
+                    return null;
                   })}
             </ul>
           </pre>
         </Box>
       </Box>
 
-      <Box sx={{ gridColumn: "span 8", p: "1rem" }}>
+      {/* Recipe instructions */}
+      <Box
+        sx={{
+          gridColumn: "span 8",
+          p: "1rem",
+          "@media screen and (max-width: 436px)": {
+            gridColumn: "span 1",
+            order: 4,
+          },
+        }}
+      >
         <Typography level="h3">Instructions</Typography>
         <Box sx={{ p: "2rem" }}>
           {recipe.strInstructions && (
@@ -227,7 +256,19 @@ const RecipeDetail: React.FC = () => {
           )}
         </Box>
       </Box>
-      <Box sx={{ gridColumn: "span 12", p: "1rem", bgcolor: "#0A2343" }}>
+
+      {/* Video Embed */}
+      <Box
+        sx={{
+          gridColumn: "span 12",
+          p: "1rem",
+          bgcolor: "#0A2343",
+          "@media screen and (max-width: 436px)": {
+            gridColumn: "span 1",
+            order: 5,
+          },
+        }}
+      >
         <RecipeVideoEmbed strYoutube={recipe.strYoutube} />
       </Box>
     </Box>
