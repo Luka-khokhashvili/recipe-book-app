@@ -7,7 +7,6 @@ import ListItemButton from "@mui/joy/ListItemButton";
 import Typography from "@mui/joy/Typography";
 import ModalClose from "@mui/joy/ModalClose";
 import Menu from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
 import { Link as MuiLink } from "@mui/joy";
 import SearchBar from "./SearchBar";
 import { recipe } from "../../../interfaces/interfaces";
