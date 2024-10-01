@@ -1,18 +1,9 @@
-import { useEffect } from "react";
 import { Box, Grid } from "@mui/joy";
 import { recipe } from "../../interfaces/interfaces";
-import { getRecipes } from "../../ApiCall";
 import FloatingCard from "./FloatingCard";
 
-export default function RecipesMain(props: {
-  recipes: recipe[] | null;
-  setRecipes: (recipes: recipe[]) => void;
-}) {
-  const { recipes, setRecipes } = props;
-
-  useEffect(() => {
-    getRecipes((setRecipe) => setRecipes(setRecipe));
-  }, [setRecipes]);
+export default function RecipesMain(props: { recipes: recipe[] | null }) {
+  const { recipes } = props;
 
   return (
     <Box

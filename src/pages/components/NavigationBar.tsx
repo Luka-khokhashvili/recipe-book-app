@@ -3,8 +3,10 @@ import { Box } from "@mui/joy";
 import NavStack from "./NavStack";
 import MobileNavBar from "./MobileNavBar";
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import { recipe } from "../../interfaces/interfaces";
 
-function NavigationBar() {
+function NavigationBar(props: { recipes: recipe[] | null }) {
+  const { recipes } = props;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
   const [glassmorph, setGlassmorph] = useState(false);
 
@@ -58,7 +60,7 @@ function NavigationBar() {
       }}
     >
       <MenuBookRoundedIcon sx={{ color: "#FFF", fontSize: "3rem" }} />
-      {isMobile ? <MobileNavBar /> : <NavStack />}
+      {isMobile ? <MobileNavBar /> : <NavStack recipes={recipes} />}
     </Box>
   );
 }
