@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Button, Typography } from "@mui/joy";
-import { Close } from "@mui/icons-material";
+import { Box, Typography } from "@mui/joy";
 
 /**
  * A React component to embed a YouTube video from a strYoutube string.
@@ -16,7 +15,6 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
 
   const videoRef = useRef<HTMLIFrameElement>(null);
   const [isFixed, setIsFixed] = useState(false);
-  const [movable, setMovable] = useState(true);
 
   /**
    * Handle the scroll event to determine if the video is in view.
@@ -26,12 +24,10 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
       const videoTop = videoRef.current?.offsetTop || 0;
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-      if (movable) {
-        if (scrollTop > videoTop) {
-          setIsFixed(true);
-        } else {
-          setIsFixed(false);
-        }
+      if (scrollTop > videoTop) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
       }
     };
 
@@ -40,7 +36,7 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [movable]);
+  }, []);
 
   return (
     <Box>
@@ -66,7 +62,7 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
         >
           {/* Add the iframe element with the YouTube video embed code */}
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?playsinline=1&autoplay=1&mute=1`}
+            src={`https://www.youtube.com/embed/${videoId}?playsinline=1&autoplay=1&mute=1&rel=0`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -78,20 +74,6 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
                 : "absolutePosition")
             }
           ></iframe>
-          {/* Add a button to close floating video */}
-          {isFixed && window.innerWidth <= 436 && (
-            <Button
-              onClick={setMovable.bind(null, false)}
-              sx={{
-                position: "fixed",
-                top: "2%",
-                right: "4%",
-                zIndex: 999,
-                background: "transparent",
-              }}
-              endDecorator={<Close sx={{ color: "#FFF" }} />}
-            ></Button>
-          )}
         </Box>
       ) : (
         <Typography>No video available</Typography>
