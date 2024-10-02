@@ -177,7 +177,7 @@ const RecipeDetail: React.FC = () => {
           "@media screen and (max-width: 436px)": {
             gridColumn: "span 1",
             gridRow: "span 1",
-            order: 3,
+            order: 4,
           },
         }}
       >
@@ -232,7 +232,7 @@ const RecipeDetail: React.FC = () => {
           p: "1rem",
           "@media screen and (max-width: 436px)": {
             gridColumn: "span 1",
-            order: 4,
+            order: 5,
           },
         }}
       >
@@ -265,7 +265,7 @@ const RecipeDetail: React.FC = () => {
           bgcolor: "#0A2343",
           "@media screen and (max-width: 436px)": {
             gridColumn: "span 1",
-            order: 5,
+            order: 3,
           },
         }}
       >

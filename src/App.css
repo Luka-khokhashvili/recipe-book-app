@@ -43,12 +43,23 @@ html {
 }
 
 .recipeVideo {
-  position: "absolute";
   top: 0;
-  left: "50%";
-  transform: "translateX(-50%)";
-  width: "85%";
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
   aspect-ratio: 16 / 9;
+}
+
+.absolutePosition {
+  position: absolute;
+}
+
+.fixedPosition {
+  position: fixed;
+  z-index: 999;
+  top: 10px;
+  width: max-content;
+  height: max-content;
 }
 
 @media screen and (max-width: 436px) {
@@ -58,5 +69,15 @@ html {
 
   .recipeVideo {
     width: 100%;
+  }
+
+  .absolutePosition {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .fixedPosition {
+    width: 92.471%;
+    aspect-ratio: 16 / 9;
   }
 }
