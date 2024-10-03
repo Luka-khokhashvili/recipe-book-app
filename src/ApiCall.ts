@@ -17,7 +17,6 @@ export async function getRecipes(setRecipe: (recipes: recipe[]) => void) {
     // Make a GET request to the API to fetch recipes. The response should be
     // an object with a "meals" key that contains an array of recipe objects.
     const response = await axiosInstance.get("?s=");
-    console.log(response);
     const data = response.data;
 
     // Check if the response contains the expected data. If it does, call the
