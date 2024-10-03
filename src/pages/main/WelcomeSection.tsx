@@ -34,7 +34,7 @@ export default function WelcomeSection() {
       <Typography
         level="h2"
         sx={{
-          fontSize: "3.6rem",
+          fontSize: "3.4rem",
           color: "rgb(255, 255, 255)",
           textTransform: "uppercase",
           fontWeight: "800",
