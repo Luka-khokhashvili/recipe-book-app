@@ -42,7 +42,7 @@ const RecipeDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <Box
+      <Typography
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -52,14 +52,14 @@ const RecipeDetail: React.FC = () => {
         }}
       >
         <CircularProgress size="lg" variant="plain" />
-        <Typography>Loading...</Typography>
-      </Box>
+        Loading...
+      </Typography>
     );
   }
 
   if (error) {
     return (
-      <Box
+      <Typography
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -68,14 +68,14 @@ const RecipeDetail: React.FC = () => {
           height: "100vh",
         }}
       >
-        <Typography>Error: {error}</Typography>
-      </Box>
+        Error: {error}
+      </Typography>
     );
   }
 
   if (!recipe) {
     return (
-      <Box
+      <Typography
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -84,8 +84,8 @@ const RecipeDetail: React.FC = () => {
           height: "100vh",
         }}
       >
-        <Typography>Recipe wasn't found</Typography>
-      </Box>
+        Recipe wasn't found
+      </Typography>
     );
   }
 
@@ -136,5 +136,4 @@ const RecipeDetail: React.FC = () => {
     </Box>
   );
 };
-
 export default RecipeDetail;
