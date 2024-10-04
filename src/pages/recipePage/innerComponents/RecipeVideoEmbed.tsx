@@ -62,14 +62,16 @@ const RecipeVideoEmbed: React.FC<{ strYoutube: string }> = ({ strYoutube }) => {
         >
           {/* Add the iframe element with the YouTube video embed code */}
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?playsinline=1&autoplay=1&mute=1&rel=0`}
+            src={`https://www.youtube.com/embed/${videoId}?playsinline=1&${
+              window.innerWidth <= 768 ? "autoplay=1" : "autoplay=0"
+            }&mute=1&rel=0`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className={
               "recipeVideo " +
-              (isFixed && window.innerWidth <= 436 // On mobile devices, if the screen scrolls over the video
+              (isFixed && window.innerWidth <= 768 // On mobile and tablet devices, if the screen scrolls over the video
                 ? "fixedPosition"
                 : "absolutePosition")
             }

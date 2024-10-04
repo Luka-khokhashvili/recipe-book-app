@@ -67,12 +67,20 @@ html {
     width: 65px;
   }
 
-  .recipeVideo {
-    width: 100%;
-  }
-
   .absolutePosition {
     width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .fixedPosition {
+    width: 92.471%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 436px) {
+  .absolutePosition {
+    width: 89%;
     aspect-ratio: 16 / 9;
   }
 

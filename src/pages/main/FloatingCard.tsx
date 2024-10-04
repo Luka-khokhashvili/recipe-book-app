@@ -24,6 +24,9 @@ const FloatingCard = ({ recipe }: { recipe: recipe }) => {
         "@media screen and (max-width: 768px) and (min-width: 436px)": {
           maxWidth: "42%",
         },
+        "@media screen and (max-width: 1024px) and (min-width: 769px)": {
+          maxWidth: "26.61%",
+        },
       }}
     >
       <CardOverflow>
