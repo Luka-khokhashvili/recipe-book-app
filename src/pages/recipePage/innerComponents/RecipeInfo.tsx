@@ -2,7 +2,16 @@ import { Box, Typography } from "@mui/joy";
 import { recipe } from "../../../interfaces/interfaces";
 import RecipeTags from "../../components/sharedComponents/RecipeTags";
 
-export default function RecipeInfo({ recipe }: { recipe: recipe | null }) {
+/**
+ * @function RecipeInfo
+ * @description This component displays the information of the recipe on the
+ *              left side of the recipe page.
+ * @param {object} props The props object.
+ * @param {recipe} props.recipe The recipe object.
+ * @returns {JSX.Element} The rendered component.
+ */
+export default function RecipeInfo(props: { recipe: recipe | null }) {
+  const { recipe } = props;
   return (
     <Box
       sx={{
@@ -23,9 +32,11 @@ export default function RecipeInfo({ recipe }: { recipe: recipe | null }) {
         },
       }}
     >
+      {/* ID of the recipe */}
       <Typography level="h1" sx={{ fontSize: "1.5rem", color: "#636B74" }}>
-        ID: {recipe?.idMeal}
+        ID: {recipe && recipe.idMeal}
       </Typography>
+      {/* Name of the recipe */}
       <Typography
         level="h1"
         sx={{
@@ -36,29 +47,36 @@ export default function RecipeInfo({ recipe }: { recipe: recipe | null }) {
           },
         }}
       >
-        {recipe?.strMeal}
+        {recipe && recipe.strMeal}
       </Typography>
+      {/* Category of the recipe */}
       <Typography level="h1" sx={{ color: "#636B74" }}>
-        {recipe?.strCategory}
+        {recipe && recipe.strCategory}
       </Typography>
+      {/* Area of the recipe */}
       <Typography level="body-lg" sx={{ color: "#D0D4D7" }}>
-        {recipe?.strArea}
+        {recipe && recipe.strArea}
       </Typography>
-      {recipe && (
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "4px",
-            margin: "2rem 0 0 1.5rem",
-          }}
-        >
-          <Typography level="body-sm" sx={{ color: "#FFF" }}>
-            Tags:{" "}
-          </Typography>
-          <RecipeTags recipe={recipe} />
-        </Box>
-      )}
+      {/* Tags */}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "4px",
+          margin: "2rem 0 0 1.5rem",
+        }}
+      >
+        {recipe && (
+          <>
+            {/* Tags label */}
+            <Typography level="body-sm" sx={{ color: "#FFF" }}>
+              Tags:{" "}
+            </Typography>
+            {/* Tags */}
+            <RecipeTags recipe={recipe} />
+          </>
+        )}
+      </Box>
     </Box>
   );
 }
