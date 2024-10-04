@@ -1,9 +1,19 @@
 import { Box, Typography } from "@mui/joy";
 import { recipe } from "../../../interfaces/interfaces";
 
-export default function RecipeInstructions(props: { recipe: recipe | null }) {
-  const { recipe } = props;
-
+/**
+ * @function RecipeInstructions
+ * @description This component displays the instructions of the recipe on the
+ *              recipe page.
+ * @param {object} props The props object.
+ * @param {recipe} props.recipe The recipe object.
+ * @returns {JSX.Element} The rendered component.
+ */
+export default function RecipeInstructions({
+  recipe,
+}: {
+  recipe: recipe | null;
+}) {
   return (
     <Box
       sx={{
@@ -21,7 +31,7 @@ export default function RecipeInstructions(props: { recipe: recipe | null }) {
     >
       <Typography level="h3">Instructions</Typography>
       <Box sx={{ p: "2rem" }}>
-        {recipe && recipe && (
+        {recipe && (
           <pre
             style={{
               whiteSpace: "pre-wrap",
