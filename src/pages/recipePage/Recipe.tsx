@@ -30,6 +30,8 @@ const RecipeDetail: React.FC = () => {
    *
    * @param {string} recipeName - The name of the recipe to fetch.
    */
+
+  /* Fetch the recipe data for the given recipe name */
   useEffect(() => {
     if (recipeName) {
       setLoading(true);
@@ -53,6 +55,8 @@ const RecipeDetail: React.FC = () => {
     }
   }, [recipeName]);
 
+  /* Render appropriate component based on loading state */
+  // if data is loading
   if (loading) {
     return (
       <Typography
@@ -70,6 +74,7 @@ const RecipeDetail: React.FC = () => {
     );
   }
 
+  // if there is an error
   if (error) {
     return (
       <Typography
@@ -86,6 +91,7 @@ const RecipeDetail: React.FC = () => {
     );
   }
 
+  // if recipe is not found
   if (!recipe) {
     return (
       <Typography
@@ -149,5 +155,4 @@ const RecipeDetail: React.FC = () => {
     </Box>
   );
 };
-
 export default RecipeDetail;
