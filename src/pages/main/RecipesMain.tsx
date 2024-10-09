@@ -2,23 +2,13 @@ import { Box, Grid } from "@mui/joy";
 import { recipe } from "../../interfaces/interfaces";
 import FloatingCard from "./FloatingCard";
 
-/**
- * @function RecipesMain
- * @description The main component for the recipe section on the main page.
- * @param {object} props The props object.
- * @param {recipe[]} props.recipes The list of recipes to display.
- * @returns {JSX.Element} The rendered component.
- */
-export default function RecipesMain({
-  recipes,
-}: {
-  recipes: recipe[] | null;
-}): JSX.Element {
+export default function RecipesMain(props: { recipes: recipe[] | null }) {
+  const { recipes } = props;
+
   return (
     <Box
       id="recipesSection"
       sx={{
-        // Flexbox properties
         flexGrow: 1,
         pt: "1rem",
         justifyContent: "center",
@@ -28,16 +18,20 @@ export default function RecipesMain({
         container
         spacing={3}
         sx={{
-          // Grid properties
-          gap: { xs: "2%", md: "4.48%" },
+          gap: "2%",
           margin: "1%",
-          justifyContent: { xs: "center", md: "flex-start" },
+          "@media screen and (max-width: 436px)": {
+            justifyContent: "center",
+          },
+          "@media screen and (max-width: 1440px) and (min-width: 1025px)": {
+            gap: "4.48%",
+          },
         }}
       >
-        {/* Map over the list of recipes and render a FloatingCard component for each one */}
-        {recipes?.map((recipe) => (
-          <FloatingCard key={recipe.idMeal} recipe={recipe} />
-        ))}
+        {recipes &&
+          recipes.map((recipe) => (
+            <FloatingCard key={recipe.idMeal} recipe={recipe} />
+          ))}
       </Grid>
     </Box>
   );

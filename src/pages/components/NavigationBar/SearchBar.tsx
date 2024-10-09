@@ -3,28 +3,15 @@ import Autocomplete, { createFilterOptions } from "@mui/joy/Autocomplete";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { FormControl } from "@mui/joy";
 
-/**
- * A reusable component for searching through a list of recipes
- * @param {object} props The props object
- * @param {recipe[]} props.recipes The list of recipes to search through
- * @param {string | null} props.selectedRecipe The currently selected recipe
- * @param {React.Dispatch<React.SetStateAction<string | null>>} props.setSelectedRecipe
- * @param {() => void} props.handleRecipeSelection
- * @returns {JSX.Element} The rendered component
- * @example
- * <SearchBar recipes={recipes} selectedRecipe={selectedRecipe} setSelectedRecipe={setSelectedRecipe} handleRecipeSelection={handleRecipeSelection} />
- */
-export default function SearchBar({
-  recipes,
-  selectedRecipe,
-  setSelectedRecipe,
-  handleRecipeSelection,
-}: {
+export default function SearchBar(props: {
   recipes: recipe[] | null;
   selectedRecipe: string | null;
   setSelectedRecipe: React.Dispatch<React.SetStateAction<string | null>>;
   handleRecipeSelection: () => void;
 }) {
+  const { recipes, selectedRecipe, handleRecipeSelection, setSelectedRecipe } =
+    props;
+
   return (
     <FormControl
       id="search-bar"
@@ -39,7 +26,7 @@ export default function SearchBar({
         <Autocomplete
           freeSolo
           placeholder="Search for a recipe"
-          options={recipes.map(({ strMeal }) => strMeal)}
+          options={recipes.map((recipe) => recipe.strMeal)}
           filterOptions={createFilterOptions({
             matchFrom: "any",
             stringify: (option) => option,
