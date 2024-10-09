@@ -6,13 +6,25 @@ import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import { recipe } from "../../../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
 
-function NavigationBar(props: { recipes: recipe[] | null }) {
+/**
+ * @function NavigationBar
+ * @description The navigation bar component, which renders the title and either
+ * the mobile navigation bar or the desktop navigation bar depending on the
+ * screen size.
+ * @param {object} props The props object.
+ * @param {recipe[]} props.recipes The list of recipes to display in the navigation
+ * bar.
+ * @returns {JSX.Element} The rendered component.
+ */
+function NavigationBar({ recipes }: { recipes: recipe[] | null }) {
   const navigate = useNavigate();
-  const { recipes } = props;
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 436);
-  const [glassmorph, setGlassmorph] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 436);
+  const [isGlassmorph, setIsGlassmorph] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState<string | null>(null);
 
+  /**
+   * Handles the selection of a recipe by navigating to the recipe page.
+   */
   const handleRecipeSelection = () => {
     if (selectedRecipe) {
       navigate(`/recipe/${selectedRecipe}`); // Navigate to the recipe page
@@ -20,25 +32,25 @@ function NavigationBar(props: { recipes: recipe[] | null }) {
   };
 
   useEffect(() => {
-    // Function to handle screen width change
+    /**
+     * Handles the resizing of the window by updating the isMobileView state.
+     */
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 436);
+      setIsMobileView(window.innerWidth <= 436);
     };
 
-    // Function to handle scroll and change navbar position
+    /**
+     * Handles the scrolling of the window by updating the isGlassmorph state.
+     */
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setGlassmorph(true);
-      } else {
-        setGlassmorph(false);
-      }
+      setIsGlassmorph(window.scrollY > 100);
     };
 
-    // Add event listeners for resize and scroll
+    // Add event listeners to the window
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up event listeners on component unmount
+    // Clean up the event listeners when the component is unmounted
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -61,7 +73,7 @@ function NavigationBar(props: { recipes: recipe[] | null }) {
         zIndex: "100",
         transition: "all 0.3s ease",
         "@media screen and (max-width: 436px)": { p: "2vh 0 1vh 0" },
-        ...(glassmorph && {
+        ...(isGlassmorph && {
           background: "rgba(13,110,253,0.5)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
@@ -69,7 +81,10 @@ function NavigationBar(props: { recipes: recipe[] | null }) {
       }}
     >
       <MenuBookRoundedIcon sx={{ color: "#FFF", fontSize: "3rem" }} />
-      {isMobile ? (
+      {/* Render either the mobile navigation bar or the desktop navigation bar
+       * depending on the screen size
+       */}
+      {isMobileView ? (
         <MobileNavBar
           recipes={recipes}
           selectedRecipe={selectedRecipe}
