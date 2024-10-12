@@ -11,25 +11,12 @@ import {
   RecipeInstructions,
 } from "./RecipeModule";
 
-/**
- * The RecipeDetail component.
- *
- * This component renders a recipe detail page based on the recipe name passed in the URL parameter.
- * It fetches the recipe data from the MealDB API and renders the recipe information, image, ingredients, instructions and video embed.
- *
- * @returns {React.ReactElement} The recipe detail component.
- */
 const RecipeDetail: React.FC = () => {
   const { name: recipeName } = useParams<{ name: string }>();
   const [recipe, setRecipe] = useState<recipe | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  /**
-   * Fetches the recipe data from the MealDB API and updates the state with the response.
-   *
-   * @param {string} recipeName - The name of the recipe to fetch.
-   */
   useEffect(() => {
     if (recipeName) {
       setLoading(true);
@@ -53,6 +40,8 @@ const RecipeDetail: React.FC = () => {
     }
   }, [recipeName]);
 
+  /* Render appropriate component based on loading state */
+  // if data is loading
   if (loading) {
     return (
       <Typography
@@ -70,6 +59,7 @@ const RecipeDetail: React.FC = () => {
     );
   }
 
+  // if there is an error
   if (error) {
     return (
       <Typography
@@ -86,6 +76,7 @@ const RecipeDetail: React.FC = () => {
     );
   }
 
+  // if recipe is not found
   if (!recipe) {
     return (
       <Typography
@@ -149,5 +140,4 @@ const RecipeDetail: React.FC = () => {
     </Box>
   );
 };
-
 export default RecipeDetail;
