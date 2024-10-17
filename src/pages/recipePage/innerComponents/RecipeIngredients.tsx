@@ -41,7 +41,7 @@ export default function RecipeIngredients({
           gridRow: "span 1",
           order: 4,
         },
-        "@media screen and (max-width: 768px)": {
+        "@media screen and (max-width: 768px) and (min-width: 437px)": {
           gridColumn: "span 2",
           gridRow: "span 1",
           order: 5,

@@ -23,7 +23,7 @@ export default function RecipeInstructions({
           gridColumn: "span 1",
           order: 5,
         },
-        "@media screen and (max-width: 768px)": {
+        "@media screen and (max-width: 768px) and (min-width: 437px)": {
           gridColumn: "span 2",
           order: 5,
         },

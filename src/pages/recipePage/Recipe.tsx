@@ -129,7 +129,7 @@ const RecipeDetail: React.FC = () => {
             order: 3,
           },
 
-          "@media screen and (max-width: 768px)": {
+          "@media screen and (max-width: 768px) and (min-width: 437px)": {
             gridColumn: "span 2",
             order: 3,
           },

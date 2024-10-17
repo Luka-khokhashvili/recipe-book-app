@@ -1,4 +1,4 @@
-import RecipeInfo from "./innerComponents/RecipeImage";
+import RecipeInfo from "./innerComponents/RecipeInfo";
 import RecipeImage from "./innerComponents/RecipeImage";
 import RecipeIngredients from "./innerComponents/RecipeIngredients";
 import RecipeInstructions from "./innerComponents/RecipeInstructions";

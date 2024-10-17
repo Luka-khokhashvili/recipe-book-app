@@ -1,13 +1,16 @@
-// import React from "react";
 import { Chip } from "@mui/joy";
 import { recipe } from "../../../interfaces/interfaces";
 
-export default function RecipeTags(props: { recipe: recipe }) {
+export default function RecipeTags(props: { recipe: recipe | null }) {
   const { recipe } = props;
+
+  if (!recipe) {
+    return null;
+  }
 
   return (
     <>
-      {recipe.strTags.split(",").map((tag: string, index: number) => (
+      {recipe.strTags?.split(",").map((tag: string, index: number) => (
         <Chip
           key={index}
           component="span"
