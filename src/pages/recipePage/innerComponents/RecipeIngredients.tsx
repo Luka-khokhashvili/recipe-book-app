@@ -51,7 +51,13 @@ export default function RecipeIngredients({
       <Typography level="h2" sx={{ color: "#FFF" }}>
         Ingredients
       </Typography>
-      <Box sx={{ p: "2rem" }}>
+      <Box
+        sx={{
+          p: "2rem",
+          fontFamily: "inter",
+          fontSize: "clamp(1rem, 1.3vw, 1.3rem)",
+        }}
+      >
         <ul>
           {ingredientKeys.map((ingredientKey, index) => {
             /**

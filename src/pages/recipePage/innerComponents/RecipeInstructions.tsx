@@ -30,22 +30,17 @@ export default function RecipeInstructions({
       }}
     >
       <Typography level="h3">Instructions</Typography>
-      <Box sx={{ p: "2rem" }}>
+      <Box
+        sx={{
+          p: "2rem",
+          "@media screen and (max-width: 436px)": { p: "0" },
+          "@media screen and (max-width: 768px) and (min-width: 437px)": {
+            p: "0",
+          },
+        }}
+      >
         {recipe && (
-          <pre
-            style={{
-              whiteSpace: "pre-wrap",
-              overflowWrap: "break-word",
-              margin: 0,
-              fontFamily: "inter",
-              fontSize: "1rem",
-              lineHeight: 1.5,
-              color: "text.secondary",
-              padding: "0.5rem",
-            }}
-          >
-            {recipe.strInstructions}
-          </pre>
+          <pre className="instructions-pre">{recipe.strInstructions}</pre>
         )}
       </Box>
     </Box>
