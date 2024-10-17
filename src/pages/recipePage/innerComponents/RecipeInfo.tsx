@@ -53,10 +53,14 @@ export default function RecipeInfo({ recipe }: { recipe: recipe | null }) {
             margin: "2rem 0 0 1.5rem",
           }}
         >
-          <Typography level="body-sm" sx={{ color: "#FFF" }}>
-            Tags:{" "}
-          </Typography>
-          <RecipeTags recipe={recipe} />
+          {recipe.strTags ? (
+            <>
+              <Typography level="body-sm" sx={{ color: "#FFF" }}>
+                Tags:{" "}
+              </Typography>
+              <RecipeTags recipe={recipe} />
+            </>
+          ) : null}
         </Box>
       )}
     </Box>
