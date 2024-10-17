@@ -17,7 +17,7 @@ export default function RecipeInfo({ recipe }: { recipe: recipe | null }) {
           gridColumn: "span 1",
           order: 2,
         },
-        "@media screen and (max-width: 768px)": {
+        "@media screen and (max-width: 768px) and (min-width: 437px)": {
           gridColumn: "span 1",
           order: 1,
         },

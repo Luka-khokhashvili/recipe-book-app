@@ -25,7 +25,7 @@ export default function RecipeImage({
           gridColumn: "span 1",
           order: 1,
         },
-        "@media screen and (max-width: 768px)": {
+        "@media screen and (max-width: 768px) and (min-width: 437px)": {
           gridColumn: "span 1",
           order: 2,
         },
